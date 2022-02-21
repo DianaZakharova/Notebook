@@ -73,9 +73,6 @@ namespace Notebook
             }
         }
 
-        //Создать документ
-
-
 
     }
 }

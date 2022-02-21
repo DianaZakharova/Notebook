@@ -16,7 +16,15 @@ namespace Notebook
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HomeForm());
+            String[] arguments = Environment.GetCommandLineArgs();
+            if (arguments.Length >= 2)
+            {
+                Application.Run(new HomeForm(arguments[1]));
+            }
+            else
+            {
+                Application.Run(new HomeForm());
+            }
         }
     }
 }

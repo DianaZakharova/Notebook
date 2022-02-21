@@ -67,6 +67,7 @@
     <Compile Include="SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TextWork.cs" />
     <EmbeddedResource Include="GoToForm.resx">
       <DependentUpon>GoToForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="programmName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Копирайтер+</Value>
+      <Value Profile="(Default)">Notebook</Value>
     </Setting>
     <Setting Name="newDocName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Новый документ</Value>

@@ -5,8 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using NewNoteBlock;
 
 namespace Notebook
 {
@@ -16,5 +16,26 @@ namespace Notebook
         {
             InitializeComponent();
         }
+
+        private void butGo_Click(object sender, EventArgs e) // Кнопка "Перейти к строке"
+        {
+            HomeForm main = this.Owner as HomeForm;
+            if (main != null)
+            {
+                int lineNumber = Convert.ToInt32(tbLineNum.Text);
+                if (lineNumber > 0 && lineNumber <= main.notebox.Lines.Count())
+                {
+                    main.notebox.SelectionStart = main.notebox.GetFirstCharIndexFromLine(Convert.ToInt32(tbLineNum.Text) - 1);
+                    main.notebox.ScrollToCaret();
+                    this.Close();
+                }
+            }
+        }
+
+        private void butCancel_Click(object sender, EventArgs e) // Кнопка "Отменить"
+        {
+            this.Close();
+        }
     }
 }
+

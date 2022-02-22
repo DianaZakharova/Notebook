@@ -55,7 +55,7 @@ namespace Notebook
             this.mViewStatusStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.mHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.notebox = new System.Windows.Forms.TextBox();
+            this.notebox = new System.Windows.Forms.RichTextBox();
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLab1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLinesCount = new System.Windows.Forms.ToolStripStatusLabel();
@@ -68,6 +68,8 @@ namespace Notebook
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
+            this.fontDialog = new System.Windows.Forms.FontDialog();
+            this.Colour = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -250,10 +252,12 @@ namespace Notebook
             // 
             this.mFormat.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mFormatTransfer,
-            this.mFormatFont});
+            this.mFormatFont,
+            this.Colour});
             this.mFormat.Name = "mFormat";
-            this.mFormat.Size = new System.Drawing.Size(69, 18);
+            this.mFormat.Size = new System.Drawing.Size(69, 19);
             this.mFormat.Text = "Формат";
+            this.mFormat.CheckStateChanged += new System.EventHandler(this.mFormat_CheckStateChanged);
             // 
             // mFormatTransfer
             // 
@@ -267,13 +271,14 @@ namespace Notebook
             this.mFormatFont.Name = "mFormatFont";
             this.mFormatFont.Size = new System.Drawing.Size(197, 22);
             this.mFormatFont.Text = "Шрифт";
+            this.mFormatFont.Click += new System.EventHandler(this.mFormatFont_Click);
             // 
             // mView
             // 
             this.mView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mViewStatusStrip});
             this.mView.Name = "mView";
-            this.mView.Size = new System.Drawing.Size(43, 18);
+            this.mView.Size = new System.Drawing.Size(43, 19);
             this.mView.Text = "Вид";
             // 
             // mViewStatusStrip
@@ -284,13 +289,15 @@ namespace Notebook
             this.mViewStatusStrip.Name = "mViewStatusStrip";
             this.mViewStatusStrip.Size = new System.Drawing.Size(190, 22);
             this.mViewStatusStrip.Text = "Строка состояния";
+            this.mViewStatusStrip.CheckStateChanged += new System.EventHandler(this.mViewStatusStrip_CheckStateChanged);
+            this.mViewStatusStrip.Click += new System.EventHandler(this.mViewStatusStrip_Click);
             // 
             // mHelp
             // 
             this.mHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem});
             this.mHelp.Name = "mHelp";
-            this.mHelp.Size = new System.Drawing.Size(74, 18);
+            this.mHelp.Size = new System.Drawing.Size(74, 19);
             this.mHelp.Text = "Справка";
             // 
             // ToolStripMenuItem
@@ -305,11 +312,10 @@ namespace Notebook
             this.notebox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.notebox.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notebox.Location = new System.Drawing.Point(0, 25);
-            this.notebox.Multiline = true;
             this.notebox.Name = "notebox";
-            this.notebox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.notebox.Size = new System.Drawing.Size(1067, 563);
             this.notebox.TabIndex = 1;
+            this.notebox.Text = "";
             this.notebox.TextChanged += new System.EventHandler(this.notebox_TextChanged);
             // 
             // StatusStrip
@@ -388,6 +394,17 @@ namespace Notebook
             // 
             this.pageSetupDialog.Document = this.printDocument;
             // 
+            // fontDialog
+            // 
+            this.fontDialog.Apply += new System.EventHandler(this.fontDialog1_Apply);
+            // 
+            // Colour
+            // 
+            this.Colour.Name = "Colour";
+            this.Colour.Size = new System.Drawing.Size(197, 22);
+            this.Colour.Text = "Изменить цвет";
+            this.Colour.Click += new System.EventHandler(this.Colour_Click);
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -441,7 +458,6 @@ namespace Notebook
         private System.Windows.Forms.ToolStripMenuItem mFileExit;
         private System.Windows.Forms.ToolStripMenuItem mEditGiveAll;
         private System.Windows.Forms.ToolStripMenuItem mViewStatusStrip;
-        private System.Windows.Forms.TextBox notebox;
         private System.Windows.Forms.StatusStrip StatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusLab1;
         private System.Windows.Forms.ToolStripStatusLabel statusLinesCount;
@@ -455,6 +471,9 @@ namespace Notebook
         private System.Windows.Forms.PrintDialog printDialog;
         private System.Windows.Forms.PageSetupDialog pageSetupDialog;
         private System.Windows.Forms.ToolStripMenuItem mEditTime;
+        public System.Windows.Forms.RichTextBox notebox;
+        private System.Windows.Forms.FontDialog fontDialog;
+        private System.Windows.Forms.ToolStripMenuItem Colour;
     }
 }
 

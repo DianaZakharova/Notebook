@@ -87,6 +87,7 @@ namespace Notebook
             this.ShowInTaskbar = false;
             this.Text = "Перейти";
             this.TopMost = true;
+
             ((System.ComponentModel.ISupportInitialize)(this.tbLineNum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

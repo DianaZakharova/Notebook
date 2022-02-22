@@ -141,6 +141,7 @@ namespace Notebook
             this.ShowInTaskbar = false;
             this.Text = "Найти и заменить";
             this.TopMost = true;
+
             this.ResumeLayout(false);
             this.PerformLayout();
 

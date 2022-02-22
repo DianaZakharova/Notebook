@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NewNoteBlock;
 
 namespace Notebook
 {
@@ -59,6 +60,12 @@ namespace Notebook
             tbChange = true;
             //То есть, теперь если текст документа будет как-то изменяться,
             //наша переменная-индикатор изменит свое значение на True.
+
+            //код для изменения значения tbChange
+            TextWork.StatusAnalize(ref notebox, ref statusLinesCount, ref statusWordsCount, ref statusCharSpaceCount, ref statusCharCount);
+
+            //строка для активации пунктов меню "Правка" только при наличии текста
+            TextWork.mEditEnableds(ref notebox, ref mEditCopy, ref mEditCut, ref mEditDel, ref mEditFind, ref mEditGo);
         }
 
         private void HomeForm_Load(object sender, EventArgs e)
@@ -277,5 +284,75 @@ namespace Notebook
             gotoform.tbLineNum.Maximum = notebox.Lines.Count();
             gotoform.ShowDialog();
         }
-    }
+
+        private void mFormatFont_Click(object sender, EventArgs e)
+        {
+            //Открывает диалог на выбор шрифта
+            FontDialog fontDialog = new FontDialog();
+            fontDialog.Font = notebox.Font;
+            if (fontDialog.ShowDialog() == DialogResult.OK) //если выбирает шрифт, то присваиваем его
+            {
+                notebox.SelectionFont = fontDialog.Font;
+            }
+
+        }
+
+        private void fontDialog1_Apply(object sender, EventArgs e)
+        {
+            fontDialog.Font = notebox.Font;
+            DialogResult = fontDialog.ShowDialog();
+            if (DialogResult == DialogResult.OK)
+            {
+                notebox.Font = fontDialog.Font;
+            }
+        }
+
+        private void mFormat_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (mFormatTransfer.CheckState == CheckState.Checked)
+            {
+                notebox.WordWrap = true;
+                notebox.ScrollBars = RichTextBoxScrollBars.Vertical;
+                mEditGo.Enabled = false;
+                statusLab1.Visible = false;
+                statusLinesCount.Visible = false;
+            }
+            else
+            {
+                notebox.WordWrap = false;
+                notebox.ScrollBars = RichTextBoxScrollBars.Both;
+                mEditGo.Enabled = true;
+                statusLab1.Visible = true;
+                statusLinesCount.Visible = true;
+            }
+        }
+
+        private void mViewStatusStrip_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mViewStatusStrip_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (mViewStatusStrip.CheckState == CheckState.Checked)
+            {
+                StatusStrip.Visible = true;
+            }
+            else
+            {
+                StatusStrip.Visible = false;
+            }
+        }
+
+        private void Colour_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.Color = notebox.ForeColor;
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                notebox.SelectionColor = colorDialog.Color;
+            }
+        }
+ 
+}
 }

@@ -87,7 +87,7 @@ namespace Notebook
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.menuStrip.Size = new System.Drawing.Size(1067, 25);
+            this.menuStrip.Size = new System.Drawing.Size(1067, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menu";
             // 
@@ -311,9 +311,9 @@ namespace Notebook
             // 
             this.notebox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.notebox.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notebox.Location = new System.Drawing.Point(0, 25);
+            this.notebox.Location = new System.Drawing.Point(0, 24);
             this.notebox.Name = "notebox";
-            this.notebox.Size = new System.Drawing.Size(1067, 563);
+            this.notebox.Size = new System.Drawing.Size(1067, 564);
             this.notebox.TabIndex = 1;
             this.notebox.Text = "";
             this.notebox.TextChanged += new System.EventHandler(this.notebox_TextChanged);
